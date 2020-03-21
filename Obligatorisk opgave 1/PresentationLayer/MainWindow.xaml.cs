@@ -21,7 +21,7 @@ namespace PresentationLayer
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {   
+    {   //Tester lige ændringer
         private Logic logicRef_;
         private LoginWindow loginWindow;
         private BPWindow bPWindow;
