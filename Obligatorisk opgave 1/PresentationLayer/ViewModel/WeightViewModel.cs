@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace PresentationLayer
 {
@@ -14,17 +15,20 @@ namespace PresentationLayer
     {
         public SeriesCollection BMI_Collection { get; set; }
         public SeriesCollection Weight_Collection { get; set; }
-        //private String explanation = "Systole er et udtryk for det laveste";
-        //public String Explanation { get { return explanation; set{ Explanation } }
 
-        private LineSeries line_BMI, line_Weight = new LineSeries();
-
+        private LineSeries line_BMI, line_Weight;
         public String[] Dates { get; set; }
+
+        //Bruges til at skrive den forklarende tekst
+        public String forklaring { get; set; }
+
         public WeightViewModel(MainWindow mainWindow, Logic logicRef)
         {
             CreateChart(mainWindow, logicRef);
-            AddBlodpreasure(mainWindow, logicRef);
+            AddWeightAndBMI(mainWindow, logicRef);
+            forklaring = "Grafen til venstre viser din vægt i kg. Grafen til højre viser dit BMI. \nBMI (Body Mass Index) beskriver forholdet mellem din vægt og højde. Det kan fortælle dig, om du vejer for lidt eller for meget: \n\nBlå zone: Undervægtig \nGrøn zone: Normalvægtig \nGul zone: let overvægtig \nRødzone: Svært overvægtig";
         }
+
         private void CreateChart(MainWindow mainWindow, Logic logicRef)
         {
             line_BMI = new LineSeries { };
@@ -40,9 +44,13 @@ namespace PresentationLayer
 
             //Tilføje titler til mine linjer
             line_BMI.Title = "BMI";
+            line_BMI.Stroke = Brushes.Black;
+            line_BMI.Fill = Brushes.Transparent;
+
             line_Weight.Title = "Vægt";
-            
-            
+            line_Weight.Stroke = Brushes.DarkBlue;
+            line_Weight.Fill = Brushes.Transparent;
+
             //Ændrer farven
             Weight_Collection.Add(line_Weight);
             BMI_Collection.Add(line_BMI);
@@ -50,7 +58,8 @@ namespace PresentationLayer
             
         }
 
-        private void AddBlodpreasure(MainWindow mainWindow, Logic logicRef)
+        //Henter alt data fra Logiv og smider det ind i mine linjer
+        private void AddWeightAndBMI(MainWindow mainWindow, Logic logicRef)
         {
             for (int i = 0; i < logicRef.getWeightAndBMIData(mainWindow.SocSecNb).Count; i++)
             {

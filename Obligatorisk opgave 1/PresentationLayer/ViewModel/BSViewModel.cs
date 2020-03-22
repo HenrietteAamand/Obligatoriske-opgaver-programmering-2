@@ -6,23 +6,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace PresentationLayer
 {
     class BSViewModel
     {
         public SeriesCollection BS_Collection { get; set; }
-        //private String explanation = "Systole er et udtryk for det laveste";
-        //public String Explanation { get { return explanation; set{ Explanation } }
-
-        private LineSeries line_bloodSugar = new LineSeries();
-
+        private LineSeries line_bloodSugar;
         public String[] Dates { get; set; }
+
+        //Bruges til at skrive den forklarende tekst
+        public String forklaring { get; set; }
         public BSViewModel(MainWindow mainWindow, Logic logicRef)
         {
             CreateChart(mainWindow, logicRef);
             AddBlodsugar(mainWindow, logicRef);
+            forklaring = "Grafen viser dit blodsukker. De forskellige zoner fortæller dig om dit blodsukker ligger normalt: \n\nBlå zone: Her ligger blodsukkeret normalt før et måltid \n\nGrøn zone: Her ligger blodsukkeret normalt  ca 1½ time efter et måltid \n\nDen grå kasse: her ligger blodsukkeret normalt ved sengetid \n\nRød zone: Her er blodsukkeret hhv for højt eller for lavt. ";
         }
+
         private void CreateChart(MainWindow mainWindow, Logic logicRef)
         {
             line_bloodSugar = new LineSeries();
@@ -35,10 +37,13 @@ namespace PresentationLayer
 
             //Tilføje titler til min linje
             line_bloodSugar.Title = "Blodsukker";
+            line_bloodSugar.Stroke = Brushes.DarkBlue;
+            line_bloodSugar.Fill = Brushes.Transparent;
 
             BS_Collection.Add(line_bloodSugar);
         }
 
+        //Henter alt data fra Logiv og smider det ind i mine linjer
         private void AddBlodsugar(MainWindow mainWindow, Logic logicRef)
         {
             for (int i = 0; i < logicRef.getBSugarData(mainWindow.SocSecNb).Count; i++)

@@ -6,38 +6,72 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:PresentationLayer"
         mc:Ignorable="d"
-        Title="BSWindow" Height="450" Width="800" Closing="BSWindow1_Closing_1">
+        Title="Graf over blodsukker" Height="550" Width="900" Closing="BSWindow_Closing" Background="#FFCDF2FF">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="653*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.15*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.05*"/>
 
         </Grid.RowDefinitions>
 
-        <lvc:CartesianChart Name ="BloodPreassure" LegendLocation="Right" Series="{Binding Path=BS_Collection}" DataTooltip="{x:Null}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
+        <lvc:CartesianChart Name ="BloodPreassure" Background="White" LegendLocation="Right" Series="{Binding Path=BS_Collection}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Margin="1,10,55,20">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Dato for måling"  LabelsRotation ="-45" Labels="{Binding Path=Dates}">
+                <lvc:Axis Title="&#x0d;&#x0a; Dato og tidspunkt for måling"  LabelsRotation ="-45" Labels="{Binding Path=Dates}" Foreground="Black">
                     <lvc:Axis.Separator>
                         <lvc:Separator IsEnabled="False" Step="1"></lvc:Separator>
                     </lvc:Axis.Separator>
+                    
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
 
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Blodsukker (mmol/L)&#x0d;&#x0a; " MaxValue="16" MinValue="2" Foreground="Black" >
+                    <lvc:Axis.Sections >
+                        <lvc:AxisSection Value="2" SectionWidth="2" >
+                            <lvc:AxisSection.Fill>
+                                <SolidColorBrush Color="#66FF0000" ></SolidColorBrush>
+                            </lvc:AxisSection.Fill>
+                        </lvc:AxisSection>
+
+                        <lvc:AxisSection Value="4" SectionWidth="3">
+                            <lvc:AxisSection.Fill>
+                                <SolidColorBrush Color="#6600BFFF"></SolidColorBrush>
+                            </lvc:AxisSection.Fill>
+                        </lvc:AxisSection>
+
+                        <lvc:AxisSection Value="7" SectionWidth="3" >
+                            <lvc:AxisSection.Fill>
+                                <SolidColorBrush Color="#6626AA38" ></SolidColorBrush>
+                            </lvc:AxisSection.Fill>
+                        </lvc:AxisSection>
+                        
+                        <lvc:AxisSection Value="10" SectionWidth="6" >
+                            <lvc:AxisSection.Fill>
+                                <SolidColorBrush Color="#66FF0000" ></SolidColorBrush>
+                            </lvc:AxisSection.Fill>
+                        </lvc:AxisSection>
+
+                        <lvc:AxisSection Value="6" Stroke="Black" Fill="Transparent" StrokeThickness="2" SectionWidth="2"/>
+
+                    </lvc:Axis.Sections>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+
         </lvc:CartesianChart>
 
-        <StackPanel Grid.Row="1" >
-            <Button  Name="BT_tilbage"          Content="Tilbage"               Margin="10,10"  FontSize="30"   Click="BT_tilbage_Click"/>
-            <Button  Name="BT_ordforkaringer"   Content="Vis ordforklaringer"   Margin="10,0"   FontSize="20"/>
-            <TextBox Name="TBx_ordforklaringer" Text=""                         Margin="10,0"   FontSize ="16" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
+        <StackPanel  Grid.Row="1"               Margin="0,0,20,0" >
+            <Button  Name="Bn_tilbage"          Content="Tilbage"                   Margin="10,10"  FontSize="36" Background="#7F00BFFF"  Click="Bn_tilbage_Click"/>
+            <Button  Name="Bn_ordforkaringer"   Content="Vis forklaring"            Margin="10,0"   FontSize="20" Background="#7F00BFFF"  Click="Bn_forkaringer_Click"/>
+            <TextBox Name="TBx_ordforklaringer" Text="{Binding Path=forklaring}" Margin="10,0"   FontSize="16" Background="#99FFFFFF"  IsReadOnly="True" Visibility="Hidden" TextWrapping="Wrap" BorderBrush="#99477B8D"/>
 
         </StackPanel>
-        <Label Content="Graf over blodsukker" Grid.Row="0" Grid.ColumnSpan="2" FontSize="30" FontWeight="Bold" />
-        
+        <Label Content="Blodsukker" Grid.Row="0" Grid.Column="0" FontSize="50" FontWeight="Bold"  Foreground="DarkBlue" />
+        <Label Content="Graf over dit blodsukker" Grid.Row="0" FontSize="30" FontWeight="Bold" Grid.Column="1" Foreground="DarkBlue" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

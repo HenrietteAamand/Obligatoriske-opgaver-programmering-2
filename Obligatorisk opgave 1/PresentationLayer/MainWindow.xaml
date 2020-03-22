@@ -5,50 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLayer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1400" Loaded="mainWindow_Loaded">
+        Title="Forside" Height="600" Width="1400" Loaded="mainWindow_Loaded" Background="#FFCDF2FF" Closing="Window_Closing">
     <Grid Margin="0,0,-0.4,0.4">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="*"/>
-
-
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-        
-            
-        </Grid.RowDefinitions>
 
-        <Label Content="Velkommen" Margin="20,0"  FontSize="50" />
-        <StackPanel Margin="0,100,0,0" Background="#FFCDF2FF">
-            <TextBox Name="TBx_info"        Text=""                 Margin="20,0,20,20"     FontSize="20" Background="DeepSkyBlue" BorderBrush="White" IsReadOnly ="False"  />
-            <Button Name = "Bn_Blodsukker"  Content="Blodsukker"    Margin="20,20,300,0"  FontSize="36" Background="DeepSkyBlue" Click="Bn_Blodsukker_Click" />
-            <Button Name = "Bn_BLodtryk"    Content="Blodtryk"      Margin="20,20,300,0"  FontSize="36" Background="DeepSkyBlue" Click="Bn_BLodtryk_Click" />
-            <Button Name = "Bn_Vægt"        Content="Vægt"          Margin="20,20,300,0"  FontSize="36" Background="DeepSkyBlue" Click="Bn_Vægt_Click" />
-            <Button Name = "Bn_Luk"         Content="Luk Program"   Margin="20,100,680,0" FontSize="20" Background="#FFFF9999"   Click="Bn_Luk_Click"  />
+        <Label Content="Velkommen" FontSize="50" FontWeight="Bold"  Margin="20,0" Foreground="DarkBlue"/>
+        <StackPanel Margin="0,100,0,0" >
+            <Label Name="Ll_info"           Content=""              Margin="20,0,130,0"   FontSize="20" Background="#99FFFFFF" BorderBrush="#00ABADB3"/>
+            <Button Name = "Bn_Blodsukker"  Content="Blodsukker"    Margin="20,20,300,0"  FontSize="36" Background="#7F00BFFF" Click="Bn_Blodsukker_Click" />
+            <Button Name = "Bn_BLodtryk"    Content="Blodtryk"      Margin="20,20,300,0"  FontSize="36" Background="#7F00BFFF" Click="Bn_BLodtryk_Click" />
+            <Button Name = "Bn_Vægt"        Content="Vægt"          Margin="20,20,300,0"  FontSize="36" Background="#7F00BFFF" Click="Bn_Vægt_Click" />
+        <Canvas>
+            <Button x:Name = "Bn_Luk"       Content="Luk Program"   Margin="20,100"  FontSize="20" Background="#7FFF0000"   Width="120"  Click="Bn_Luk_Click"  />
+            <Button x:Name = "Bn_Logud"     Content="Log ud"        Margin="160,100" FontSize="20" Background="#7FFF0000"   Width="120" Click="Bn_Logud_Click"    />
+        </Canvas>
         </StackPanel>
 
 
-        <StackPanel Grid.Column="1" Margin="0,100,0,0">
-            <Label Content="Vælg antal uger du vil sende informationer om:" FontSize="24"/>
-            <Viewbox Height="35" HorizontalAlignment="Left" Margin="0,20">
+        <StackPanel Grid.Column="1" Margin="0,100,0,-0.4">
+            <Label Content="Vælg antal uger du vil sende informationer om:" FontSize="20" Background="#99FFFFFF" Margin="0,0,20,20"/>
+            <Viewbox Height="36" HorizontalAlignment="Left" Margin="0,10">
                 <RadioButton x:Name="RBn_en" GroupName="weeks" Content="1 uge"   />
             </Viewbox>
 
-            <Viewbox Height="35" HorizontalAlignment="Left" Margin="0,20">
+            <Viewbox Height="36" HorizontalAlignment="Left" Margin="0,10" OpacityMask="Black">
                 <RadioButton x:Name="RBn_to" GroupName="weeks" Content="2 uger" />
             </Viewbox>
 
-            <Viewbox Height="35"  HorizontalAlignment="Left" Margin="0,15">
+            <Viewbox Height="36"  HorizontalAlignment="Left" Margin="0,10">
                 <RadioButton x:Name="RBn_fire" GroupName="weeks" Content="4 uger"/>
             </Viewbox>
 
-            <Viewbox Height="35" HorizontalAlignment="Left" Margin="0,15">
+            <Viewbox Height="36" HorizontalAlignment="Left" Margin="0,10">
                 <RadioButton x:Name="RBn_sendIkke" GroupName="weeks" Content="Send ikke nogen information" />
             </Viewbox>
-            <Button Name = "Bn_Send" Content="send" Grid.Column="4" Margin="50,20,400,20" FontSize="36" Click="Bn_Send_Click" />
-            <ScrollBar Width="Auto"/>
-        </StackPanel>
 
+            <Label Name="Ll_sendInfo" Foreground="Red" Content="Noget meget lang tekst" FontSize="16" Grid.Column="1" Margin="0" Height="60"/>
+            <Button Name = "Bn_Send" Content="send" Grid.Column="4" Width=" 200" FontSize="36" Background="#7F00BFFF" HorizontalAlignment="Left" Click="Bn_Send_Click" />
+    
+            <!-- Dette er denn lille cirkel med spørgsmålstegnet inden i-->
+            <Canvas Height="100" Width="100" HorizontalAlignment="left"  Margin="205,-70">
+                <Ellipse Fill ="AliceBlue" HorizontalAlignment="Left" Stroke="Black" Width="20" Height="21" Margin="0,5"/>
+                <Label Content="?" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" Margin="1.5,0" Height="25" Grid.Column="1" Width="20"/>
+                <TextBox Name="TBx_info" FontSize="16" Visibility="Hidden" Background="Yellow" Margin="274,383,155,12.6" Grid.Column="1" />
+            </Canvas>
+        </StackPanel>
 
     </Grid>
 </Window>

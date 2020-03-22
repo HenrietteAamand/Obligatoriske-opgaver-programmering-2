@@ -21,6 +21,7 @@ namespace PresentationLayer
     public partial class BSWindow : Window
     {
         MainWindow mainWindow_;
+        private bool showWordExplanations { get; set; }
         public BSWindow(MainWindow mainWindow, Logic logicRef)
         {
             InitializeComponent();
@@ -28,15 +29,31 @@ namespace PresentationLayer
             DataContext = new BSViewModel(mainWindow_, logicRef);
         }
 
-        private void BT_tilbage_Click(object sender, RoutedEventArgs e)
+        private void Bn_tilbage_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
             mainWindow_.Show();
         }
 
-   
+        private void Bn_forkaringer_Click(object sender, RoutedEventArgs e)
+        {
+            if (showWordExplanations)
+            {
+                Bn_ordforkaringer.Content = "Vis forklaring";
+                TBx_ordforklaringer.Visibility = Visibility.Hidden;
+                showWordExplanations = false;
+            }
+            else if (showWordExplanations == false)
+            {
+                Bn_ordforkaringer.Content = "Skjul forklaring";
+                TBx_ordforklaringer.Visibility = Visibility.Visible;
+                showWordExplanations = true;
+            }
+            //Dit BMI(Body Mass Index) beskriver forholdet mellem din vægt og højde
+        }
 
-        private void BSWindow1_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
+
+        private void BSWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             this.Hide();
             mainWindow_.Show();

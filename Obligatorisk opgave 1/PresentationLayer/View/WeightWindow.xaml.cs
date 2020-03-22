@@ -33,33 +33,32 @@ namespace PresentationLayer
             //Databinder til min viewmodel hvor jeg vil oprette mine linjer
             DataContext = new WeightViewModel(mainWindow_, logicRef_);
             TBx_ordforklaringer.IsReadOnly = true;
-            TBx_ordforklaringer.Text = "Dette er en lang testtekst der bliver gentaget \nDette er en lang testtekst der bliver gentaget \nDette er en lang testtekst der bliver gentaget \nDette er en lang testtekst der bliver gentaget \n";
         }
 
-        private void BT_tilbage_Click(object sender, RoutedEventArgs e)
+        private void Bn_tilbage_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
             mainWindow_.Show();
             showWordExplanations = false;
         }
 
-        private void BT_ordforkaringer_Click(object sender, RoutedEventArgs e)
+        private void Bn_ordforkaringer_Click(object sender, RoutedEventArgs e)
         {
             if (showWordExplanations)
             {
+                Bn_ordforkaringer.Content = "Vis forklaringer";
                 TBx_ordforklaringer.Visibility = Visibility.Hidden;
                 showWordExplanations = false;
             }
             else if(showWordExplanations == false)
             {
-
+                Bn_ordforkaringer.Content = "Skjul forklaringer";
                 TBx_ordforklaringer.Visibility = Visibility.Visible;
                 showWordExplanations = true;
             }
-            //Dit BMI(Body Mass Index) beskriver forholdet mellem din vægt og højde
         }
 
-        private void WeightWindowName_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
+        private void WeightWindowName_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             this.Hide();
             mainWindow_.Show();

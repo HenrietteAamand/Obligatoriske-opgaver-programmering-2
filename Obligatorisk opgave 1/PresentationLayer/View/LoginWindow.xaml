@@ -5,32 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLayer"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="500" PreviewKeyDown="Window_PreviewKeyDown">
+        Title="LoginWindow" Height="480" Width="500" PreviewKeyDown="Window_PreviewKeyDown" Background="#FFCDF2FF">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="220"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="1.2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Angiv personnummer (CPR)" Grid.Column="1" VerticalAlignment="Bottom" FontSize="16"/>
-        <Label Content="Angiv kodeord" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" FontSize="16"/>
+        <Label Content="Log ind for at fortsætte" Grid.Column="0"   VerticalAlignment="Top"     FontSize="30" Foreground="DarkBlue" FontWeight="Bold" Grid.ColumnSpan="3" />
+        <Label Content="Angiv personnummer (CPR)" Grid.Column="1"   VerticalAlignment="Bottom"  FontSize="16" Foreground="DarkBlue"/>
+        <TextBox Name="TBx_username"      Text="999999-0000" FontSize="30" Grid.Column="1" Grid.Row="1" Background="AliceBlue" TextChanged="TB_username_TextChanged"/>
 
-        <TextBox Name="TB_username" Text="999999-0000" FontSize="30" Grid.Column="1" Grid.Row="1" Background="AliceBlue" TextChanged="TB_username_TextChanged"/>
-        <PasswordBox Name="PWB_password" Password="testpw" FontSize="30" Grid.Column="1" Grid.Row="3" Background="AliceBlue"/>
-        <Button Name="Bn_login" Content="Login" Grid.Column="1" Grid.Row="5" FontSize="30" Background="DeepSkyBlue" Click="Bn_login_Click"/>
-        <Ellipse Grid.Column="2" Fill ="AliceBlue" HorizontalAlignment="Left" Height="20" Stroke="Black" Width="20" Margin="0.4,44,0,4" />
-        <Label Content="?" Grid.Column="2" HorizontalAlignment="Left" Margin="2.4,39,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"/>
-        <TextBox Name="TB_info" Visibility="Hidden" Background="Yellow"  Text="Dit personnummer er din &#xD;&#xA;fødselsdagsdato efterfulgt &#xD;&#xA;af 4 andre tal. &#xD;&#xA;Du kan finde dit CPR nummer &#xD;&#xA;på forsiden af dit &#xD;&#xA;gule sygesikringskort" Grid.Column="2" Margin="22.4,13,1.6,12" Grid.RowSpan="2"/>
+        <Label Content="Angiv kode (4 tal)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"  FontSize="16" Foreground="DarkBlue"/>
+        <PasswordBox Name="PWB_password" Password="testpw" FontSize="30" Grid.Column="1" Grid.Row="3" Background="AliceBlue" />
 
+        <Button Name="Bn_login"   Content="Login"       Margin="0,5" Grid.Column="1" Grid.Row="5" FontSize="30" Background="DeepSkyBlue" Click="Bn_login_Click"/>
+        <Button x:Name = "Bn_Luk" Content="Luk Program" Margin="0,5" Grid.Column="1" Grid.Row="6" FontSize="25" Background="#7FFF0000"   Click="Bn_Luk_Click"  />
+
+        <!--    De to infoboxe: -->
+        <Ellipse Grid.Column="2" Fill ="AliceBlue" HorizontalAlignment="Left" Stroke="Black" Width="20" Margin="1,59,0,3" />
+        <Label Content="?" Grid.Column="2" HorizontalAlignment="Left" Margin="3,54,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" Height="27"/>
+        <TextBox Name="TBx_info" Visibility="Hidden" Background="Yellow"   Grid.Column="2" Margin="22,50,2,20" Grid.RowSpan="3"/>
+
+        <Ellipse Grid.Column="2" Fill ="AliceBlue" HorizontalAlignment="Left" Height="20" Stroke="Black" Width="20" Margin="1,17,0,3" Grid.Row="2" />
+        <Label Content="?" Grid.Column="2" HorizontalAlignment="Left" Margin="3,12,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" MouseEnter="Label_MouseEnter1" MouseLeave="Label_MouseLeave1" Grid.Row="2" RenderTransformOrigin="0.5,2" Grid.RowSpan="2"/>
+        <TextBox Name="TBx_infoPassword" Visibility="Hidden" Background="Yellow" Grid.Column="2" Grid.Row="2"  Margin="22.4,13,1.6,12" Grid.RowSpan="2"/>
+        <Label x:Name="Ll_forkertLogin" Content="Personnummer eller kodeord var &#xD;&#xA;forkert. Prøv igen" Grid.Row="4" Grid.Column="1" FontSize="16" Foreground="Red" Visibility="Hidden"/>
     </Grid>
 </Window>
