@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Obligatorisk_opgave_2.Properties
+namespace Praesentationslag.Properties
 {
 
 
