@@ -115,7 +115,6 @@ namespace PresentationLayer
                         Ll_sendInfo.Content = "Ingen information sendt";
                         break;
                 }
-
             }
         }
 

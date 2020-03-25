@@ -25,10 +25,10 @@
 
         <Label Content="Log ind for at fortsætte" Grid.Column="0"   VerticalAlignment="Top"     FontSize="30" Foreground="DarkBlue" FontWeight="Bold" Grid.ColumnSpan="3" />
         <Label Content="Angiv personnummer (CPR)" Grid.Column="1"   VerticalAlignment="Bottom"  FontSize="16" Foreground="DarkBlue"/>
-        <TextBox Name="TBx_username"      Text="999999-0000" FontSize="30" Grid.Column="1" Grid.Row="1" Background="AliceBlue" TextChanged="TB_username_TextChanged"/>
+        <TextBox Name="TBx_username"      Text="ddmmyy-xxxx" FontSize="30" Grid.Column="1" Grid.Row="1" Background="AliceBlue" TextChanged="TB_username_TextChanged"/>
 
         <Label Content="Angiv kode (4 tal)" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom"  FontSize="16" Foreground="DarkBlue"/>
-        <PasswordBox Name="PWB_password" Password="testpw" FontSize="30" Grid.Column="1" Grid.Row="3" Background="AliceBlue" />
+        <PasswordBox Name="PWB_password" Password="" FontSize="30" Grid.Column="1" Grid.Row="3" Background="AliceBlue" />
 
         <Button Name="Bn_login"   Content="Login"       Margin="0,5" Grid.Column="1" Grid.Row="5" FontSize="30" Background="DeepSkyBlue" Click="Bn_login_Click"/>
         <Button x:Name = "Bn_Luk" Content="Luk Program" Margin="0,5" Grid.Column="1" Grid.Row="6" FontSize="25" Background="#7FFF0000"   Click="Bn_Luk_Click"  />

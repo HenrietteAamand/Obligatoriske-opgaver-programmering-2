@@ -24,14 +24,14 @@
 
         <lvc:CartesianChart Name ="Weight" LegendLocation="Right" Background="White" Foreground="DarkBlue" Series="{Binding Path=Weight_Collection}" DataTooltip="{x:Null}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,10,55,20">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="&#x0d;&#x0a; Dato for måling"  LabelsRotation ="-45" Labels="{Binding Path=Dates}">
+                <lvc:Axis Title="&#x0d;&#x0a; Dato for måling"  LabelsRotation ="-45" Labels="{Binding Path=Dates}" Foreground="Black">
                     <lvc:Axis.Separator>
                         <lvc:Separator IsEnabled="False" Step="1"></lvc:Separator>
                     </lvc:Axis.Separator>
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Vægt i kg &#x0d;&#x0a; ">
+                <lvc:Axis Title="Vægt i kg &#x0d;&#x0a; " Foreground="Black">
                 </lvc:Axis>
 
             </lvc:CartesianChart.AxisY>
@@ -39,7 +39,7 @@
 
         <lvc:CartesianChart Name ="BMI" LegendLocation="Right" Background="White" Series="{Binding Path=BMI_Collection}" DataTooltip="{x:Null}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" Margin="1,10,20,20">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="&#x0d;&#x0a; Dato for måling"  LabelsRotation ="-45" Labels="{Binding Path=Dates}">
+                <lvc:Axis Title="&#x0d;&#x0a; Dato for måling"  LabelsRotation ="-45" Labels="{Binding Path=Dates}" Foreground="Black">
                     <lvc:Axis.Separator>
                         <lvc:Separator IsEnabled="False" Step="1"></lvc:Separator>
                     </lvc:Axis.Separator>
@@ -47,9 +47,9 @@
             </lvc:CartesianChart.AxisX>
 
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="BMI &#x0d;&#x0a; " MaxValue="35" MinValue="15">
+                <lvc:Axis Title="BMI &#x0d;&#x0a; " MaxValue="35" MinValue="15" Foreground="Black">
                     <lvc:Axis.Sections >
-                        <lvc:AxisSection Value="15" SectionWidth="3.5">
+                        <lvc:AxisSection Value="15" SectionWidth="3.5" >
                             <lvc:AxisSection.Fill>
                                 <SolidColorBrush Color="#6600BFFF"></SolidColorBrush>
                             </lvc:AxisSection.Fill>

@@ -50,7 +50,7 @@
             <Canvas Height="100" Width="100" HorizontalAlignment="left"  Margin="205,-70">
                 <Ellipse Fill ="AliceBlue" HorizontalAlignment="Left" Stroke="Black" Width="20" Height="21" Margin="0,5"/>
                 <Label Content="?" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" Margin="1.5,0" Height="25" Grid.Column="1" Width="20"/>
-                <TextBox Name="TBx_info" FontSize="16" Visibility="Hidden" Background="Yellow" Margin="274,383,155,12.6" Grid.Column="1" />
+                <TextBox Name="TBx_info" FontSize="16" Visibility="Hidden" Width="200" Height="155" Background="Yellow" Margin="30,-40" Grid.Column="1" />
             </Canvas>
         </StackPanel>
 
