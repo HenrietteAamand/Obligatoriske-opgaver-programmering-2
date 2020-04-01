@@ -31,7 +31,7 @@
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Vægt i kg &#x0d;&#x0a; " Foreground="Black">
+                <lvc:Axis Title="Vægt i kg &#x0d;&#x0a; " Foreground="Black" MinValue="{Binding Path=MinValueWeight}" MaxValue="{Binding Path=MaxValueWeight}">
                 </lvc:Axis>
 
             </lvc:CartesianChart.AxisY>
@@ -47,7 +47,7 @@
             </lvc:CartesianChart.AxisX>
 
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="BMI &#x0d;&#x0a; " MaxValue="35" MinValue="15" Foreground="Black">
+                <lvc:Axis Title="BMI &#x0d;&#x0a; " MinValue="{Binding Path=MinValueBMI}" MaxValue="{Binding Path=MaxValueBMI}" Foreground="Black">
                     <lvc:Axis.Sections >
                         <lvc:AxisSection Value="15" SectionWidth="3.5" >
                             <lvc:AxisSection.Fill>

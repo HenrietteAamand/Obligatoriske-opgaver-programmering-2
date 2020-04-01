@@ -31,7 +31,7 @@
             </lvc:CartesianChart.AxisX>
 
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Blodsukker (mmol/L)&#x0d;&#x0a; " MaxValue="16" MinValue="2" Foreground="Black" >
+                <lvc:Axis Title="Blodsukker (mmol/L)&#x0d;&#x0a; " MaxValue="{Binding Path=MaxValueBS}" MinValue="{Binding Path=MinValueBS}" Foreground="Black" >
                     <lvc:Axis.Sections >
                         <lvc:AxisSection Value="2" SectionWidth="2" >
                             <lvc:AxisSection.Fill>

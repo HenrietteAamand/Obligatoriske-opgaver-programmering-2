@@ -7,7 +7,7 @@ using DTO;
 
 namespace Data_Layer
 {
-    class DataFile : IData
+    public class DataFile : IData
     {
         private FileStream input;
         private StreamReader reader;
@@ -148,4 +148,3 @@ namespace Data_Layer
 
     }
 }
-.-

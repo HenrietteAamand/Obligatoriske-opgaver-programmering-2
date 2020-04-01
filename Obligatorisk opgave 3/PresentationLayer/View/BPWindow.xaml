@@ -34,10 +34,9 @@
                 <lvc:Axis Title="Blodtryk (mmHg)&#x0d;&#x0a; " MaxValue="160" MinValue="50" Foreground="Black" >
 
                     <lvc:Axis.Sections >
-
                         <lvc:AxisSection Value="100" SectionWidth="40" >
                             <lvc:AxisSection.Fill>
-                                <SolidColorBrush Color="#668B0000" ></SolidColorBrush>
+                                <SolidColorBrush Color="#668B0000"></SolidColorBrush>
                             </lvc:AxisSection.Fill>
                         </lvc:AxisSection>
 

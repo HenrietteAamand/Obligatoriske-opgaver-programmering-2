@@ -19,6 +19,12 @@ namespace PresentationLayer
         private LineSeries line_BMI, line_Weight;
         public String[] Dates { get; set; }
 
+        //EKSTRA TILBEHØR
+        public double MinValueBMI { get; set; }
+        public double MaxValueBMI { get; set; }
+        public double MinValueWeight { get; set; }
+        public double MaxValueWeight { get; set; }
+
         //Bruges til at skrive den forklarende tekst
         public String forklaring { get; set; }
 
@@ -40,7 +46,7 @@ namespace PresentationLayer
 
             //Opretter alle mine linjer med den korrekte værdi (her int)
             line_Weight.Values = new ChartValues<double>();
-            line_BMI.Values = new ChartValues<int>();
+            line_BMI.Values = new ChartValues<double>();
 
             //Tilføje titler til mine linjer
             line_BMI.Title = "BMI";
@@ -61,6 +67,11 @@ namespace PresentationLayer
         //Henter alt data fra Logiv og smider det ind i mine linjer
         private void AddWeightAndBMI(MainWindow mainWindow, Logic logicRef)
         {
+            MinValueBMI = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[0].BMI_;
+            MaxValueBMI = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[0].BMI_;
+            MinValueWeight = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[0].Weight_;
+            MaxValueWeight = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[0].Weight_;
+
             for (int i = 0; i < logicRef.getWeightAndBMIData(mainWindow.SocSecNb).Count; i++)
             {
                 line_BMI.Values.Add(logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_);
@@ -68,7 +79,28 @@ namespace PresentationLayer
 
                 //Min lables til x-axen
                 Dates[i] = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Date_.ToString("dd/MM/yyyy");
+
+                //EKSTRA TILBEHØR
+                //Finder max og min værdi for mine akser
+                if (MinValueBMI > logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_)
+                    MinValueBMI = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_;
+
+                if (MaxValueBMI < logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_)
+                    MaxValueBMI = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_;
+
+                if (MinValueWeight > logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Weight_)
+                    MinValueWeight = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Weight_;
+
+                if (MaxValueWeight < logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Weight_)
+                    MaxValueWeight = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Weight_;
             }
+
+            //EKSTRATILBEHØR
+            MinValueBMI -= 2;
+            MaxValueBMI += 2;
+            MinValueWeight -= 2;
+            MaxValueWeight += 2;
+
         }
     }
 }

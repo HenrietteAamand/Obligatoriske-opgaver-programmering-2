@@ -18,6 +18,11 @@ namespace PresentationLayer
 
         //Bruges til at skrive den forklarende tekst
         public String forklaring { get; set; }
+
+        //EKSTRA TILBEHØR
+        public double MinValueBS { get; set; }
+        public double MaxValueBS { get; set; }
+
         public BSViewModel(MainWindow mainWindow, Logic logicRef)
         {
             CreateChart(mainWindow, logicRef);
@@ -46,13 +51,31 @@ namespace PresentationLayer
         //Henter alt data fra Logiv og smider det ind i mine linjer
         private void AddBlodsugar(MainWindow mainWindow, Logic logicRef)
         {
+            MinValueBS = logicRef.getBSugarData(mainWindow.SocSecNb)[0].BloodSugar_;
+            MaxValueBS = logicRef.getBSugarData(mainWindow.SocSecNb)[0].BloodSugar_;
+
             for (int i = 0; i < logicRef.getBSugarData(mainWindow.SocSecNb).Count; i++)
             {
                 line_bloodSugar.Values.Add(logicRef.getBSugarData(mainWindow.SocSecNb)[i].BloodSugar_);
 
                 //Mine lables til x-axen
                 Dates[i] = logicRef.getBSugarData(mainWindow.SocSecNb)[i].Date_.ToString("dd/MM/yyyy hh:mm");
+                
+                
+                //EKSTRA TILBEHØR
+                //Finder max og min værdi for mine akser
+                if (MinValueBS > logicRef.getBSugarData(mainWindow.SocSecNb)[i].BloodSugar_)
+                    MinValueBS = logicRef.getBSugarData(mainWindow.SocSecNb)[i].BloodSugar_;
+
+                if (MaxValueBS < logicRef.getBSugarData(mainWindow.SocSecNb)[i].BloodSugar_)
+                    MaxValueBS = logicRef.getBSugarData(mainWindow.SocSecNb)[i].BloodSugar_;
+
             }
+
+            //EKSTRATILBEHØR
+            MinValueBS -= 2;
+            MaxValueBS += 2;
+            
         }
     }
 }

@@ -5,7 +5,7 @@ using DTO;
 
 namespace Data_Layer
 {
-    interface IData
+    public interface IData
     {
         bool isUserRegistered(String socSecNb, String pw);
 

@@ -35,6 +35,7 @@ namespace PresentationLayer
 
             logicRef_ = new Logic();
             loginWindow = new LoginWindow(this, logicRef_);
+
         }
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
