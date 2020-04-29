@@ -1,7 +1,7 @@
-﻿<Application x:Class="Praesentationslag.App"
+﻿<Application x:Class="PraesentationsLag.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Praesentationslag"
+             xmlns:local="clr-namespace:PraesentationsLag"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

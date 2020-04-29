@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Praesentationslag.Properties
+namespace PraesentationsLag.Properties
 {
 
 

@@ -55,7 +55,7 @@
         <StackPanel  Grid.Row="1"               Margin="0,0,20,0" >
             <Button  Name="Bn_tilbage"          Content="Tilbage"                   Margin="10,10"  FontSize="36" Background="#7F00BFFF"  Click="Bn_tilbage_Click"/>
             <Button  Name="Bn_ordforkaringer"   Content="Vis forklaring"            Margin="10,0"   FontSize="20" Background="#7F00BFFF"  Click="Bn_ordforkaringer_Click"/>
-            <TextBox Name="TBx_ordforklaringer" Text="{Binding Path=forklaring}" Margin="10,0"   FontSize="16" Background="#99FFFFFF"  IsReadOnly="False" HorizontalScrollBarVisibility="Visible" Visibility="Hidden" TextWrapping="Wrap" BorderBrush="#99477B8D"/>
+            <TextBox Name="TBx_ordforklaringer" Text="{Binding Path=forklaring}" Margin="10,0"   FontSize="16" Background="#99FFFFFF"  IsReadOnly="True" HorizontalScrollBarVisibility="Visible" Visibility="Hidden" TextWrapping="Wrap" BorderBrush="#99477B8D"/>
 
         </StackPanel>
         <Label Content="Blodtryk" Grid.Row="0" Grid.Column="0" FontSize="50" FontWeight="Bold"  Foreground="DarkBlue" />
