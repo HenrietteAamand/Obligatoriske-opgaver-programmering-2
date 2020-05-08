@@ -28,8 +28,12 @@ namespace PresentationLayer
         //Bruges til at skrive den forklarende tekst
         public String forklaring { get; set; }
 
+        //For at mindske tiden kopieres dataene fra databasen over i denne liste
+        private List<DTO_Weight> weightList;
+
         public WeightViewModel(MainWindow mainWindow, Logic logicRef)
         {
+            weightList = new List<DTO_Weight>();
             CreateChart(mainWindow, logicRef);
             AddWeightAndBMI(mainWindow, logicRef);
             forklaring = "Grafen til venstre viser din vægt i kg. Grafen til højre viser dit BMI. \nBMI (Body Mass Index) beskriver forholdet mellem din vægt og højde. Det kan fortælle dig, om du vejer for lidt eller for meget: \n\nBlå zone: Undervægtig \nGrøn zone: Normalvægtig \nGul zone: let overvægtig \nRødzone: Svært overvægtig";
@@ -37,12 +41,20 @@ namespace PresentationLayer
 
         private void CreateChart(MainWindow mainWindow, Logic logicRef)
         {
+
             line_BMI = new LineSeries { };
             line_Weight = new LineSeries();
             BMI_Collection = new SeriesCollection();
             Weight_Collection = new SeriesCollection();
 
-            Dates = new String[logicRef.getWeightAndBMIData(mainWindow.SocSecNb).Count];
+            foreach (DTO_Weight item in logicRef.getWeightAndBMIData(mainWindow.SocSecNb))
+            {
+                weightList.Add(item);
+
+            }
+
+            //Dates = new String[logicRef.getWeightAndBMIData(mainWindow.SocSecNb).Count];
+            Dates = new String[weightList.Count];
 
             //Opretter alle mine linjer med den korrekte værdi (her int)
             line_Weight.Values = new ChartValues<double>();
@@ -60,39 +72,37 @@ namespace PresentationLayer
             //Ændrer farven
             Weight_Collection.Add(line_Weight);
             BMI_Collection.Add(line_BMI);
-
-            
         }
 
         //Henter alt data fra Logiv og smider det ind i mine linjer
         private void AddWeightAndBMI(MainWindow mainWindow, Logic logicRef)
         {
-            MinValueBMI = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[0].BMI_;
-            MaxValueBMI = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[0].BMI_;
-            MinValueWeight = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[0].Weight_;
-            MaxValueWeight = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[0].Weight_;
+            MinValueBMI = weightList[0].BMI_;
+            MaxValueBMI = weightList[0].BMI_;
+            MinValueWeight = weightList[0].Weight_;
+            MaxValueWeight = weightList[0].Weight_;
 
-            for (int i = 0; i < logicRef.getWeightAndBMIData(mainWindow.SocSecNb).Count; i++)
+            for (int i = 0; i < weightList.Count; i++)
             {
-                line_BMI.Values.Add(logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_);
-                line_Weight.Values.Add(logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Weight_); //Det her virker ikke?
+                line_BMI.Values.Add(weightList[i].BMI_);
+                line_Weight.Values.Add(weightList[i].Weight_); //Det her virker ikke?
 
                 //Min lables til x-axen
-                Dates[i] = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Date_.ToString("dd/MM/yyyy");
+                Dates[i] = weightList[i].Date_.ToString("dd/MM/yyyy");
 
                 //EKSTRA TILBEHØR
                 //Finder max og min værdi for mine akser
-                if (MinValueBMI > logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_)
-                    MinValueBMI = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_;
+                if (MinValueBMI > weightList[i].BMI_)
+                    MinValueBMI = weightList[i].BMI_;
 
-                if (MaxValueBMI < logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_)
-                    MaxValueBMI = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].BMI_;
+                if (MaxValueBMI < weightList[i].BMI_)
+                    MaxValueBMI = weightList[i].BMI_;
 
-                if (MinValueWeight > logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Weight_)
-                    MinValueWeight = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Weight_;
+                if (MinValueWeight > weightList[i].Weight_)
+                    MinValueWeight = weightList[i].Weight_;
 
-                if (MaxValueWeight < logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Weight_)
-                    MaxValueWeight = logicRef.getWeightAndBMIData(mainWindow.SocSecNb)[i].Weight_;
+                if (MaxValueWeight < weightList[i].Weight_)
+                    MaxValueWeight = weightList[i].Weight_;
             }
 
             //EKSTRATILBEHØR

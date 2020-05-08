@@ -8,16 +8,14 @@ using Data_Layer;
 
 namespace Logic_Layer
 {
-    // This is NOT a Logic tier.
-    // It is at Logic stump (no connection to a Data tier) wich can be used ONLY to test the Presentation tier.
-    // Test login is: social security number "999999-0000" and password "testpw"
+
     public class Logic
     {
         private IData dataObject;
 
         public Logic()
         {
-            dataObject = new DataFile();
+            dataObject = new Database();
 
         }
 

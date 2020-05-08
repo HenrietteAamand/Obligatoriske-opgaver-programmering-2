@@ -1,0 +1,44 @@
+﻿--st-i4dab.uni.au.dk
+--F20ST2ITS2201905063
+
+--CREATE TABLE RegUsers (
+--CPR nVARCHAR(11) PRIMARY KEY,
+--Kode nCHAR(4),
+--Hoejde INT
+--);
+
+--CREATE TABLE BPdata (
+--ID INT  IDENTITY (1, 1) PRIMARY KEY,
+--CPR nVARCHAR(11) FOREIGN KEY REFERENCES RegUsers(CPR),
+--Systolic INT,
+--Diastolic INT,
+--Date DATETIME 
+--);
+
+--CREATE TABLE WeigthData(
+--ID INT  IDENTITY (1, 1) PRIMARY KEY,
+--CPR nVARCHAR(11) FOREIGN KEY REFERENCES RegUsers(CPR),
+--Weight REAL,
+--Dato DATETIME
+--);
+
+--CREATE TABLE BSdata (
+--ID INT  IDENTITY (1, 1) PRIMARY KEY,
+--CPR nVARCHAR(11) FOREIGN KEY REFERENCES RegUsers(CPR),
+--Bloodsugar REAL,
+--Dato DATETIME
+--);
+
+--SELECT*From RegUsers;
+--SELECT*FROM WeightData;
+--SELECT*FROM BSdata
+
+--SELECT CPR, Kode
+--FROM RegUsers WHERE CPR = '123456-7890' AND Kode = '1234';
+--SELECT systolic, diastolic, Date FROM BPData WHERE CPR = '123456-7890';
+--SELECT Weight, Date FROM WeightData WHERE SoSec = '123456-7890';
+
+--SELECT*From RegUsers;
+--SELECT*FROM WeightData;
+--SELECT*FROM BSdata;
+--SELECT*FROM BPdata;

@@ -37,7 +37,7 @@ namespace PresentationLayer
 
             Dates = new String[logicRef.getBSugarData(mainWindow.SocSecNb).Count];
 
-            //Opretter alle mine linjer med den korrekte værdi (her int)
+            //Opretter alle mine linjer med den korrekte værdi (her double)
             line_bloodSugar.Values = new ChartValues<double>();
 
             //Tilføje titler til min linje
